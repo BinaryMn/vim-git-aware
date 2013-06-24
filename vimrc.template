@@ -1,0 +1,32 @@
+" Author: Chris Olin <contact@chrisolin.com>
+" URL: https://github.com/BinaryMn/vim-git-aware
+
+"Borrowing some code from https://github.com/motemen/git-vim/
+
+if !exists('g:git_bin')
+    let g:git_bin = 'git'
+endif
+
+function! s:SystemGit(args)
+" workardound for MacVim, on which shell does not inherit environment
+" variables
+    if has('mac') && &shell =~ 'sh$'
+        return system('EDITOR="" '. g:git_bin . ' ' . a:args)
+    else
+        return system(g:git_bin . ' ' . a:args)
+    endif
+endfunction
+
+function! s:GetGitDir()
+    if !exists('b:git_dir')
+        let b:git_dir = s:SystemGit('rev-parse --git-dir')
+        if !v:shell_error
+            let b:git_dir = fnamemodify(split(b:git_dir, "\n")[0], ':p') . '/'
+        endif
+    endif
+    return b:git_dir
+endfunction
+
+if exists('b:git_dir')
+    source ~/.vim-git-aware/git.vim
+endif

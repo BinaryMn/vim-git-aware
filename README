@@ -1,0 +1,1 @@
+To make this work, clone this repo in ~ and add the settings in vimrc.template to your own .vimrc. By default, it will look for git.vim in ~/vim-git-aware. 
