@@ -27,6 +27,23 @@ function! s:GetGitDir()
     return b:git_dir
 endfunction
 
+" Returns current git branch.
+" Call inside 'statusline' or 'titlestring'.
+function! GitBranch()
+    let git_dir = <SID>GetGitDir()
+
+    if strlen(git_dir) && filereadable(git_dir . '/HEAD')
+        let lines = readfile(git_dir . '/HEAD')
+        if !len(lines)
+            return ''
+        else
+            return matchstr(lines[0], 'refs/heads/\zs.\+$')
+        endif
+    else
+        return ''
+    endif
+endfunction
+
 if exists('b:git_dir')
     source $HOME/vim-git-aware/git.vim
 endif
