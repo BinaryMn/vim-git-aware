@@ -33,6 +33,7 @@ function! GitBranch()
     let git_dir = <SID>GetGitDir()
 
     if strlen(git_dir) && filereadable(git_dir . '/HEAD')
+        source $HOME/vim-git-aware/git.vim
         let lines = readfile(git_dir . '/HEAD')
         if !len(lines)
             return ''
@@ -43,7 +44,3 @@ function! GitBranch()
         return ''
     endif
 endfunction
-
-if exists('b:git_dir')
-    source $HOME/vim-git-aware/git.vim
-endif
