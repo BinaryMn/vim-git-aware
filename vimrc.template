@@ -28,5 +28,5 @@ function! s:GetGitDir()
 endfunction
 
 if exists('b:git_dir')
-    source ~/.vim-git-aware/git.vim
+    source $HOME/vim-git-aware/git.vim
 endif
