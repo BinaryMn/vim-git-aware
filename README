@@ -1,1 +1,5 @@
-To make this work, clone this repo in ~ and add the settings in vimrc.template to your own .vimrc. By default, it will look for git.vim in ~/vim-git-aware. 
+To make this work, clone this repo in home directory. Then modify your .vimrc to source ~/vim-git-aware/timrc.template.
+
+A statusbar template is also included along with some useful functions. Feel free to use it as a base in adjusting your statusbar layout.
+
+Note, this is my own personal script. You're welcome to use it, but new features are added as it applies to my own habits and workflows.
