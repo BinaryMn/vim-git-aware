@@ -1,5 +1,5 @@
 " Author: Chris Olin <contact@chrisolin.com>
-" URL: https://github.com/BinaryMn/vim-git-aware
+" URL: https://github.com/wildcolin/vim-git-aware
 
 "Borrowing some code from https://github.com/motemen/git-vim/
 
@@ -33,7 +33,7 @@ function! GitBranch()
     let git_dir = <SID>GetGitDir()
 
     if strlen(git_dir) && filereadable(git_dir . '/HEAD')
-        source $HOME/vim-git-aware/git.vim
+        source $HOME/.vim/bundle/vim-git-aware/git.vim
         let lines = readfile(git_dir . '/HEAD')
         if !len(lines)
             return ''
